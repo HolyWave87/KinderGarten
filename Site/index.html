@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="/style.css" />
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script src="//unpkg.com/alpinejs" defer></script>
+		<script src="https://kit.fontawesome.com/9935986003.js" crossorigin="anonymous"></script>
+		<title>KinderGarden</title>
+	</head>
+	<body
+		x-data="{navOpen: false, scrolledFromTop: false}"
+		x-init="window.pageYOffset >= 50 ? scrolledFromTop = true : scrolledFromTop = false"
+		@scroll.window="window.pageYOffset >= 50 ? scrolledFromTop = true : scrolledFromTop = false"
+		:class="{
+      'overflow-hidden': navOpen,
+      'overflow-scroll': !navOpen
+      }"
+	>
+		<header
+			class="fixed w-full bg-blue-500 flex justify-between items-center px-4 text-lg md:px-12 transition-all duration-200 h-24 z-10"
+			:class="{'h-32': !scrolledFromTop, 'h-24': scrolledFromTop, 'text-base': scrolledFromTop}"
+		>
+			<a href="#">
+				<img
+					src="/img/kids.webp"
+					alt="logo"
+					class="h-12 transform origin-left transition duration-200"
+					:class="{'scale-100': !scrolledFromTop, 'scale-75': scrolledFromTop}"
+				/>
+			</a>
+			<nav>
+				<button class="md:hidden" @click="navOpen = !navOpen">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						class="h-8 w-8 text-white"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke="currentColor"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M4 6h16M4 12h16M4 18h16"
+						/>
+					</svg>
+				</button>
+				<ul
+					class="fixed left-0 right-0 min-h-screen px-4 pt-8 space-y-4 bg-blue-500 text-white transform transition duration-300 translate-x-full md:relative md:flex md:space-x-10 md:min-h-0 md:px-0 md:py-0 md:space-y-0 md:translate-x-0"
+					:class="{'translate-x-full': !navOpen}"
+					:class="{'translate-x-0': navOpen}"
+				>
+					<li class="">
+						<a href="#" @click="navOpen = false">Главная</a>
+					</li>
+					<li class="">
+						<a href="#features" @click="navOpen = false">Features</a>
+					</li>
+					<li>
+						<a href="#about" @click="navOpen = false">О нас</a>
+					</li>
+
+					<li>
+						<a href="#contacts" @click="navOpen = false">Контакты</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+
+		<section class="pt-32 pb-16 px-8 md:px-12 bg-blue-500 text-center">
+			<div class="max-w-7xl mx-auto md:flex md:items-center md:justify-between">
+				<div class="md:flex-1 md:mr-6">
+					<h1 class="font-bold text-4xl md:text-5xl text-white leading-normal">
+						Билингвальный детский сад Монтессори "Ньютон"
+					</h1>
+					<p class="mt-4 text-2xl text-white">Дошкольное развитие по международным стандартам</p>
+				</div>
+				<div class="md:flex-1 pt-6">
+					<img src="/img/HeroLogo.webp" alt="KinderGarden" />
+				</div>
+			</div>
+		</section>
+
+		<section id="features" class="min-h-screen"></section>
+
+		<section id="about" class="pt-32 pb-16 px-8 md:px-12 bg-gray-100 text-center">
+			<div class="max-w-7xl mx-auto justify-center md:flex md:items-center">
+				<h2 class="font-bold text-4xl md:text-4xl leading-normal">
+					Желаете, чтобы Ваш ребенок вырос счастливым и успешным ?
+				</h2>
+			</div>
+			<div class="max-w-7xl mx-auto justify-center md:flex md:items-center">
+				<p class="mt-4 text-xl">Мы можем раскрыть его способности используя методику Монтессори</p>
+			</div>
+
+			<div class="max-w-7xl mx-auto md:flex md:items-center md:justify-between">
+				<div>
+					<i class="fa-solid fa-kitchen-set fa-4x pt-24"></i>
+					<h3 class="font-bold text-xl pt-12">
+						Повседневные <br />
+						бытовые навыки
+					</h3>
+					<span class="text-lg">
+						<li><p>Самостоятельность в быту</p></li>
+						<li><p>Уборка за собой</p></li>
+						<li>
+							<p>
+								Поддержание в чистоте и порядке <br />
+								своих вещей и обуви
+							</p>
+						</li>
+					</span>
+				</div>
+
+				<div>
+					<i class="fa-solid fa-graduation-cap fa-4x pt-24"></i>
+					<h3 class="font-bold text-xl pt-12">Саморазвитие</h3>
+					<span class="text-lg">
+						<li><p>Любовь к самостоятельному обучению</p></li>
+						<li><p>Концентрация внимания</p></li>
+						<li>
+							<p>Вежливость</p>
+						</li>
+						<li>
+							<p>Самомотивация</p>
+						</li>
+					</span>
+				</div>
+
+				<div>
+					<i class="fa-solid fa-users fa-4x pt-28"></i>
+					<h3 class="font-bold text-xl pt-12">Социальные Навыки</h3>
+					<span class="text-lg">
+						<li><p>Лидерские качества</p></li>
+						<li><p>Умение общаться и договариваться</p></li>
+						<li>
+							<p>
+								Спокойствие, психологическая <br />
+								уравновешенность
+							</p>
+						</li>
+
+						<li>
+							<p>Самоуважение</p>
+						</li>
+					</span>
+				</div>
+			</div>
+		</section>
+
+		<section id="contacts" class="">
+			<!-- FeedBack start -->
+			<div class="py-6 flex flex-col justify-center sm:py-12">
+				<div class="relative py-3 sm:max-w-xl sm:mx-auto">
+					<div
+						class="absolute inset-0 bg-blue-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"
+					></div>
+					<div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
+						<div class="max-w-md mx-auto">
+							<div>
+								<h1 class="text-3xl font-extrabold">Обратная связь</h1>
+								<p class="mt-3">Напишите нам и мы обязательно свяжемся с Вами</p>
+								<hr class="mt-3 border-gray-300" />
+							</div>
+							<div class="divide-y divide-gray-200">
+								<form
+									class="pt-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7 -mb-8"
+									action="sendMail.php"
+									method="POST"
+								>
+									<label
+										class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+										for=""
+									>
+										Имя <span class="text-red-500">*</span>
+									</label>
+									<input
+										required
+										class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+										name="user_name"
+										type="text"
+										placeholder="Имя"
+									/>
+
+									<label
+										class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+										for=""
+									>
+										Телефон <span class="text-red-500">*</span>
+									</label>
+									<input
+										required
+										class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+										name="tel"
+										type="text"
+										placeholder="Телефон"
+									/>
+
+									<label
+										class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+										for=""
+									>
+										Email <span class="text-red-500">*</span>
+									</label>
+									<input
+										required
+										class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+										name="email"
+										type="email"
+										placeholder="Email"
+									/>
+
+									<label
+										class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+										for=""
+									>
+										Сообщение
+									</label>
+									<textarea
+										class="resize-y py-3 px-4 border focus:outline-none rounded-md w-full bg-gray-200"
+										name="message"
+										placeholder="Сообщение ( не обязательно )"
+									></textarea>
+
+									<div class="flex items-end justify-end">
+										<button
+											class="bg-blue-500 hover:bg-blue-500 text-white font-semibold py-2 px-4 rounded"
+										>
+											Отправить
+										</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- FeedBack end  -->
+			<!-- Контакты и карта start  -->
+
+			<!-- Контакты и карта end  -->
+		</section>
+
+		<footer class="flex gap-2 bg-blue-500 text-white p-8 items-center justify-center">
+			<p>Все права защищены | &copy | Детский сад Ньютон |</p>
+			<script>
+				document.write(new Date().getFullYear());
+			</script>
+		</footer>
+	</body>
+</html>
