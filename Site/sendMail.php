@@ -5,3 +5,5 @@ $email = $_POST['email'];
 $message = $_POST['message'];
 // echo "Привет $userName", $tel, $email, $message ;
 mail("holywave@yandex.ru", "Тестовое письмо", "name: $userName, tel: $tel, email: $email, message: $message");
+
+// header("Location: index.html");
