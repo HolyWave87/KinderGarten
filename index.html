@@ -63,9 +63,9 @@
 					<li class="">
 						<a href="#home" @click="navOpen = false">Главная</a>
 					</li>
-					<li class="">
+					<!-- <li class="">
 						<a href="#features" @click="navOpen = false">Features</a>
-					</li>
+					</li> -->
 					<li>
 						<a href="#about" @click="navOpen = false">О нас</a>
 					</li>
@@ -94,21 +94,21 @@
 		<!-- SECTION HERO start  -->
 
 		<!-- SECTION 1 start  -->
-		<section id="features" class="pt-16 pb-16 px-8 md:px-12 bg-gray-100 text-center">
+		<section class="pt-16 pb-16 px-8 md:px-12 bg-gray-100 text-center">
 			<!-- Carousel start  -->
 
 			<div x-data="carousel()" class="relative">
-				<img
-					class="img-carousel w-full  object-contain "
-					:src="images[selected]"
-					alt="mountains"
-				/>
+				<img class="img-carousel w-full object-contain" :src="images[selected]" alt="pictures" />
 
+				<i
+					@click="if (selected > 0 ) {selected -= 1} else { selected = images.length - 1 }"
+					class="fa-regular fa-circle-left fa-3x absolute left-0 bottom-56 ml-8 text-gray-100 text-indigo-400 opacity-50 hover:opacity-100 cursor-pointer focus:outline-none"
+				></i>
 
-				<i @click="if (selected > 0 ) {selected -= 1} else { selected = images.length - 1 }" class="fa-regular fa-circle-left fa-3x absolute left-0 bottom-56 ml-8 text-gray-100 text-indigo-400 opacity-50 hover:opacity-100 cursor-pointer focus:outline-none"></i>
-
-
-				<i @click="if (selected > 0 ) {selected -= 1} else { selected = images.length - 1 }" class="fa-regular fa-circle-right fa-3x absolute right-0 bottom-56 mr-8 text-gray-100 text-indigo-400 opacity-50 hover:opacity-100 cursor-pointer focus:outline-none"></i>
+				<i
+					@click="if (selected > 0 ) {selected -= 1} else { selected = images.length - 1 }"
+					class="fa-regular fa-circle-right fa-3x absolute right-0 bottom-56 mr-8 text-gray-100 text-indigo-400 opacity-50 hover:opacity-100 cursor-pointer focus:outline-none"
+				></i>
 
 				<div class="absolute bottom-0 w-full p-4 flex justify-center space-x-6">
 					<template x-for="(image,index) in images" :key="index">
@@ -121,9 +121,12 @@
 				</div>
 			</div>
 
-
-
 			<!-- Carousel end  -->
+		</section>
+		<!-- SECTION 1 end  -->
+
+		<!-- SECTION 2 start -->
+		<section id="about" class="pt-32 pb-16 px-8 md:px-12 bg-gray-100 text-center">
 			<div class="max-w-7xl mx-auto justify-center pt-16 md:flex md:items-center">
 				<h2 class="font-bold text-4xl md:text-4xl leading-normal">
 					Желаете, чтобы Ваш ребенок вырос счастливым и успешным ?
@@ -186,12 +189,16 @@
 					</span>
 				</div>
 			</div>
-		</section>
-		<!-- SECTION 1 end  -->
-
-		<!-- SECTION 2 start -->
-		<section id="about" class="pt-32 pb-16 px-8 md:px-12 bg-gray-100 text-center">
-
+			<div class="mx-auto justify-center pt-16 text-lg">
+				<p>
+					В Билингвальном детском саду <strong> Монтессори Ньютон </strong> ждут в гости детишек со
+					своими родителями! Это удобное пространство, где в малочисленной группе коллектив
+					воспитателей и педагогов организует быт и досуг маленьких подопечных. Такая обстановка
+					позволяет уделять им больше внимания и тщательнее следить за развитием каждого. Здесь есть
+					возможность реализовать дополнительные пожелания мам и пап. И к тому же попасть в частный
+					детский сад не отнимает много сил.
+				</p>
+			</div>
 		</section>
 		<!-- SECTION 2 end -->
 
@@ -199,7 +206,7 @@
 		<section id="contacts" class="">
 			<!--Modal start-->
 			<div
-				class="modal fixed hidden inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full"
+				class="modal z-10 fixed hidden inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full"
 				id="my-modal"
 			>
 				<div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
@@ -433,7 +440,20 @@
 		</footer>
 
 		<script>
-			// script for modal start
+			// script убирает #якоря c url
+			window.addEventListener("popstate", function () {
+				history.pushState("", "", location.pathname);
+			});
+
+			// script carousel (в этой переменной фото)
+			const carousel = () => {
+				return {
+					selected: 0,
+					images: ["/img/3.jpg", "/img/2.jpg", "/img/1.jpg"],
+				};
+			};
+
+			// script modal window
 			let modal = document.getElementById("my-modal");
 			let button = document.getElementById("ok-btn");
 
@@ -446,7 +466,7 @@
 					modal.style.display = "none";
 				}
 			};
-			// script for modal end
+			// script отправки формы без перезагрузки страницы
 
 			document.addEventListener("DOMContentLoaded", () => {
 				const ajaxSend = async (formData) => {
@@ -479,15 +499,6 @@
 					});
 				}
 			});
-
-			// script for carousel start
-			const carousel = () => {
-				return {
-					selected: 0,
-					images: ["/img/3.jpg", "/img/2.jpg", "/img/1.jpg"],
-				};
-			};
-			// script for carousel end
 		</script>
 	</body>
 </html>
