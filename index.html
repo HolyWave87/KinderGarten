@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="scroll-smooth" lang="en">
+<html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -10,11 +10,10 @@
 			href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap"
 			rel="stylesheet"
 		/>
+		<link rel="stylesheet" href="/output.css" />
 		<link rel="stylesheet" href="/style.css" />
-		<script src="https://cdn.tailwindcss.com"></script>
-		<script src="//unpkg.com/alpinejs" defer></script>
+		<script defer src="https://unpkg.com/alpinejs@3.10.3/dist/cdn.min.js"></script>
 		<script src="https://kit.fontawesome.com/9935986003.js" crossorigin="anonymous"></script>
-
 		<title>KinderGarten</title>
 	</head>
 	<body
@@ -102,12 +101,12 @@
 
 				<i
 					@click="if (selected > 0 ) {selected -= 1} else { selected = images.length - 1 }"
-					class="fa-regular fa-circle-left fa-3x absolute left-0 bottom-56 ml-8 text-gray-100 text-indigo-400 opacity-50 hover:opacity-100 cursor-pointer focus:outline-none"
+					class="fa-regular fa-circle-left fa-3x absolute left-0 bottom-56 ml-8 text-indigo-400 opacity-50 hover:opacity-100 cursor-pointer focus:outline-none"
 				></i>
 
 				<i
 					@click="if (selected > 0 ) {selected -= 1} else { selected = images.length - 1 }"
-					class="fa-regular fa-circle-right fa-3x absolute right-0 bottom-56 mr-8 text-gray-100 text-indigo-400 opacity-50 hover:opacity-100 cursor-pointer focus:outline-none"
+					class="fa-regular fa-circle-right fa-3x absolute right-0 bottom-56 mr-8 text-indigo-400 opacity-50 hover:opacity-100 cursor-pointer focus:outline-none"
 				></i>
 
 				<div class="absolute bottom-0 w-full p-4 flex justify-center space-x-6">
@@ -191,12 +190,11 @@
 			</div>
 			<div class="mx-auto justify-center pt-16 text-lg">
 				<p>
-					В Билингвальном детском саду <strong> Монтессори Ньютон </strong> ждут в гости детишек со
+					В Билингвальном детском саду <strong> Монтессори Ньютон </strong> ждут в гости детей со
 					своими родителями! Это удобное пространство, где в малочисленной группе коллектив
 					воспитателей и педагогов организует быт и досуг маленьких подопечных. Такая обстановка
 					позволяет уделять им больше внимания и тщательнее следить за развитием каждого. Здесь есть
-					возможность реализовать дополнительные пожелания мам и пап. И к тому же попасть в частный
-					детский сад не отнимает много сил.
+					возможность реализовать дополнительные пожелания мам и пап.
 				</p>
 			</div>
 		</section>
@@ -441,64 +439,64 @@
 
 		<script>
 			// script убирает #якоря c url
-			window.addEventListener("popstate", function () {
-				history.pushState("", "", location.pathname);
+window.addEventListener("popstate", function () {
+	history.pushState("", "", location.pathname);
+});
+
+// script carousel (в этой переменной фото)
+const carousel = () => {
+	return {
+		selected: 0,
+		images: ["/img/3.jpg", "/img/2.jpg", "/img/1.jpg"],
+	};
+};
+
+// script modal window
+let modal = document.getElementById("my-modal");
+let button = document.getElementById("ok-btn");
+
+button.onclick = function () {
+	modal.style.display = "none";
+};
+
+window.onclick = function (event) {
+	if (event.target == modal) {
+		modal.style.display = "none";
+	}
+};
+// script отправки формы без перезагрузки страницы
+
+document.addEventListener("DOMContentLoaded", () => {
+	const ajaxSend = async (formData) => {
+		const response = await fetch("sendMail.php", {
+			method: "POST",
+			body: formData,
+		});
+		if (!response.ok) {
+			throw new Error(`Ошибка по адресу ${url}, статус ошибки ${response.status}`);
+		}
+		return await response.text();
+	};
+
+	if (document.querySelector("form")) {
+		const forms = document.querySelectorAll("form");
+
+		forms.forEach((form) => {
+			form.addEventListener("submit", function (e) {
+				e.preventDefault();
+				const formData = new FormData(this);
+
+				ajaxSend(formData)
+					.then((response) => {
+						modal.style.display = "block"; //вызываем modal window с ответа от сервера т.е. по отправке формы
+						console.log(response);
+						form.reset(); // очищаем поля формы
+					})
+					.catch((err) => console.error(err));
 			});
-
-			// script carousel (в этой переменной фото)
-			const carousel = () => {
-				return {
-					selected: 0,
-					images: ["/img/3.jpg", "/img/2.jpg", "/img/1.jpg"],
-				};
-			};
-
-			// script modal window
-			let modal = document.getElementById("my-modal");
-			let button = document.getElementById("ok-btn");
-
-			button.onclick = function () {
-				modal.style.display = "none";
-			};
-
-			window.onclick = function (event) {
-				if (event.target == modal) {
-					modal.style.display = "none";
-				}
-			};
-			// script отправки формы без перезагрузки страницы
-
-			document.addEventListener("DOMContentLoaded", () => {
-				const ajaxSend = async (formData) => {
-					const response = await fetch("sendMail.php", {
-						method: "POST",
-						body: formData,
-					});
-					if (!response.ok) {
-						throw new Error(`Ошибка по адресу ${url}, статус ошибки ${response.status}`);
-					}
-					return await response.text();
-				};
-
-				if (document.querySelector("form")) {
-					const forms = document.querySelectorAll("form");
-
-					forms.forEach((form) => {
-						form.addEventListener("submit", function (e) {
-							e.preventDefault();
-							const formData = new FormData(this);
-
-							ajaxSend(formData)
-								.then((response) => {
-									modal.style.display = "block"; //вызываем modal window с ответа от сервера т.е. по отправке формы
-									console.log(response);
-									form.reset(); // очищаем поля формы
-								})
-								.catch((err) => console.error(err));
-						});
-					});
-				}
-			});
+		});
+	}
+});
 		</script>
 	</body>
 </html>
