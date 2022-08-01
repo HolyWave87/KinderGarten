@@ -12,6 +12,7 @@
 		/>
 		<link rel="stylesheet" href="/output.css" />
 		<link rel="stylesheet" href="/style.css" />
+		<!-- <link rel="stylesheet" href="/main.js"> -->
 		<script defer src="https://unpkg.com/alpinejs@3.10.3/dist/cdn.min.js"></script>
 		<script src="https://kit.fontawesome.com/9935986003.js" crossorigin="anonymous"></script>
 		<title>KinderGarten</title>
@@ -96,7 +97,7 @@
 		<section class="pt-16 pb-16 px-8 md:px-12 bg-gray-100 text-center">
 			<!-- Carousel start  -->
 
-			<div x-data="carousel()" class="relative">
+			<div x-data="carousel()" class="relative object-contain">
 				<img class="img-carousel w-full object-contain" :src="images[selected]" alt="pictures" />
 
 				<i
@@ -105,7 +106,7 @@
 				></i>
 
 				<i
-					@click="if (selected > 0 ) {selected -= 1} else { selected = images.length - 1 }"
+					@click="if (selected < images.length - 1  ) {selected += 1} else { selected = 0 }"
 					class="fa-regular fa-circle-right fa-3x absolute right-0 bottom-56 mr-8 text-indigo-400 opacity-50 hover:opacity-100 cursor-pointer focus:outline-none"
 				></i>
 
@@ -340,7 +341,7 @@
 							class="absolute z-0 w-40 h-40 bg-indigo-400 rounded-full -left-28 -bottom-16"
 						></div>
 						<div class="relative z-1 bg-white rounded-xl shadow-lg p-8 text-gray-600 md:w-96">
-							<form class="flex flex-col space-y-4" action="sendMail.php" method="POST">
+							<form class="flex flex-col space-y-4" onsubmit="sendForm(this); return false;">
 								<div>
 									<label for="" class="text-sm">Имя*</label>
 									<input
@@ -439,64 +440,55 @@
 
 		<script>
 			// script убирает #якоря c url
-window.addEventListener("popstate", function () {
-	history.pushState("", "", location.pathname);
-});
-
-// script carousel (в этой переменной фото)
-const carousel = () => {
-	return {
-		selected: 0,
-		images: ["/img/3.jpg", "/img/2.jpg", "/img/1.jpg"],
-	};
-};
-
-// script modal window
-let modal = document.getElementById("my-modal");
-let button = document.getElementById("ok-btn");
-
-button.onclick = function () {
-	modal.style.display = "none";
-};
-
-window.onclick = function (event) {
-	if (event.target == modal) {
-		modal.style.display = "none";
-	}
-};
-// script отправки формы без перезагрузки страницы
-
-document.addEventListener("DOMContentLoaded", () => {
-	const ajaxSend = async (formData) => {
-		const response = await fetch("sendMail.php", {
-			method: "POST",
-			body: formData,
-		});
-		if (!response.ok) {
-			throw new Error(`Ошибка по адресу ${url}, статус ошибки ${response.status}`);
-		}
-		return await response.text();
-	};
-
-	if (document.querySelector("form")) {
-		const forms = document.querySelectorAll("form");
-
-		forms.forEach((form) => {
-			form.addEventListener("submit", function (e) {
-				e.preventDefault();
-				const formData = new FormData(this);
-
-				ajaxSend(formData)
-					.then((response) => {
-						modal.style.display = "block"; //вызываем modal window с ответа от сервера т.е. по отправке формы
-						console.log(response);
-						form.reset(); // очищаем поля формы
-					})
-					.catch((err) => console.error(err));
+			window.addEventListener("popstate", function () {
+				history.pushState("", "", location.pathname);
 			});
-		});
-	}
-});
+
+			// script carousel (в этой переменной фото)
+			const carousel = () => {
+				return {
+					selected: 0,
+					images: [
+						"/img/1.webp",
+						"/img/2.webp",
+						"/img/3.webp",
+						"/img/4.webp",
+						"/img/5.webp",
+						"/img/6.webp",
+						"/img/7.webp",
+						"/img/8.webp",
+						"/img/9.webp",
+						"/img/10.webp",
+					],
+				};
+			};
+
+			// script modal window
+			let modal = document.getElementById("my-modal");
+			let button = document.getElementById("ok-btn");
+
+			button.onclick = function () {
+				modal.style.display = "none";
+			};
+
+			window.onclick = function (event) {
+				if (event.target == modal) {
+					modal.style.display = "none";
+				}
+			};
+			// script отправки формы без перезагрузки страницы
+
+			async function sendForm(form) {
+				let response = await fetch("sendMail.php", {
+					method: "POST",
+					body: new FormData(form),
+				});
+				let data = await response.json();
+				if (data == "ok") {
+					modal.style.display = "block"; //вызываем modal window с ответа от сервера т.е. по отправке формы
+					form.reset(); // очищаем поля формы
+				}
+			}
 		</script>
 	</body>
 </html>

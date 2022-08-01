@@ -1,9 +1,20 @@
 <?php
+
+//получаем данные с формы в переменные
+
 $userName = $_POST['user_name'];
 $tel = $_POST['tel'];
 $email = $_POST['email'];
 $message = $_POST['message'];
-// echo "Привет $userName", $tel, $email, $message ;
+
+// отправляем данные с формы на почту
+
 mail("holywave@yandex.ru", "Письмо с сайта детского сада", "Имя: $userName, Телефон: $tel, Email: $email, Сообщение: $message");
 
-// header("Location: index.html");
+// отправляем на фронт ответ в формате json
+
+$data = "ok"; // переменная с ответом
+header("Content-type: application/json"); // спец метод
+echo json_encode($data); // собственно сам json, вместо echo можно писать return разницы нет
+
+// header("Location: index.html"); // это если надо чтобы страница перезагружалась после отправки формы и возвращала на главную
