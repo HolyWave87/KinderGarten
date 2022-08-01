@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="/output.css" />
+		<link rel="stylesheet" href="/style.css" />
+		<script defer src="https://unpkg.com/alpinejs@3.10.3/dist/cdn.min.js"></script>
+		<script src="https://kit.fontawesome.com/9935986003.js" crossorigin="anonymous"></script>
+		<title>KinderGarten</title>
+	</head>
+	<body
+		x-data="{navOpen: false, scrolledFromTop: false}"
+		x-init="window.pageYOffset >= 50 ? scrolledFromTop = true : scrolledFromTop = false"
+		@scroll.window="window.pageYOffset >= 50 ? scrolledFromTop = true : scrolledFromTop = false"
+		:class="{
+      'overflow-hidden': navOpen,
+      'overflow-scroll': !navOpen
+      }"
+	>
+		<header
+			class="fixed w-full bg-blue-500 flex justify-between items-center px-4 text-lg md:px-12 transition-all duration-200 h-24 z-10"
+			:class="{'h-24': !scrolledFromTop, 'h-16': scrolledFromTop, 'text-base': scrolledFromTop}"
+		>
+			<a href="">
+				<img
+					src="/img/kids.webp"
+					alt="logo"
+					class="h-12 transform origin-left transition duration-200"
+					:class="{'scale-100': !scrolledFromTop, 'scale-75': scrolledFromTop}"
+				/>
+			</a>
+			<nav>
+				<button class="md:hidden" @click="navOpen = !navOpen">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						class="h-8 w-8 text-white"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke="currentColor"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M4 6h16M4 12h16M4 18h16"
+						/>
+					</svg>
+				</button>
+				<ul
+					class="fixed left-0 right-0 min-h-screen px-4 pt-8 space-y-4 bg-blue-500 text-white transform transition duration-300 translate-x-full md:relative md:flex md:space-x-10 md:min-h-0 md:px-0 md:py-0 md:space-y-0 md:translate-x-0"
+					:class="{'translate-x-full': !navOpen}"
+					:class="{'translate-x-0': navOpen}"
+				>
+					<li class="">
+						<a href="#home" @click="navOpen = false">Главная</a>
+					</li>
+					<!-- <li class="">
+						<a href="#features" @click="navOpen = false">Features</a>
+					</li> -->
+					<li>
+						<a href="#about" @click="navOpen = false">О нас</a>
+					</li>
+
+					<li>
+						<a href="#contacts" @click="navOpen = false">Контакты</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+
+		<!-- SECTION HERO start  -->
+		<section id="home" class="pt-32 pb-16 px-8 md:px-12 bg-blue-500 text-center">
+			<div class="max-w-7xl mx-auto md:flex md:items-center md:justify-between">
+				<div class="md:flex-1 md:mr-6">
+					<h1 class="font-bold text-4xl md:text-5xl text-white leading-normal">
+						Билингвальный детский сад Монтессори "Ньютон"
+					</h1>
+					<p class="mt-4 text-2xl text-white">Дошкольное развитие по международным стандартам</p>
+				</div>
+				<div class="md:flex-1 pt-6">
+					<img src="/img/HeroLogo.webp" alt="KinderGarden" />
+				</div>
+			</div>
+		</section>
+		<!-- SECTION HERO start  -->
+
+		<!-- SECTION 1 start  -->
+		<section class="pt-16 pb-16 px-8 md:px-12 bg-gray-100 text-center">
+			<!-- Carousel start  -->
+
+			<div x-data="carousel()" class="relative">
+				<img class="img-carousel w-full object-contain" :src="images[selected]" alt="pictures" />
+
+				<i
+					@click="if (selected > 0 ) {selected -= 1} else { selected = images.length - 1 }"
+					class="fa-regular fa-circle-left fa-3x absolute left-0 bottom-56 ml-8 text-indigo-400 opacity-50 hover:opacity-100 cursor-pointer focus:outline-none"
+				></i>
+
+				<i
+					@click="if (selected > 0 ) {selected -= 1} else { selected = images.length - 1 }"
+					class="fa-regular fa-circle-right fa-3x absolute right-0 bottom-56 mr-8 text-indigo-400 opacity-50 hover:opacity-100 cursor-pointer focus:outline-none"
+				></i>
+
+				<div class="absolute bottom-0 w-full p-4 flex justify-center space-x-6">
+					<template x-for="(image,index) in images" :key="index">
+						<button
+							@click="selected = index"
+							:class="{'bg-indigo-400': selected == index, 'bg-gray-500': selected != index}"
+							class="h-2 w-5 rounded-full hover:bg-gray-300 ring-2 ring-gray-300"
+						></button>
+					</template>
+				</div>
+			</div>
+
+			<!-- Carousel end  -->
+		</section>
+		<!-- SECTION 1 end  -->
+
+		<!-- SECTION 2 start -->
+		<section id="about" class="pt-32 pb-16 px-8 md:px-12 bg-gray-100 text-center">
+			<div class="max-w-7xl mx-auto justify-center pt-16 md:flex md:items-center">
+				<h2 class="font-bold text-4xl md:text-4xl leading-normal">
+					Желаете, чтобы Ваш ребенок вырос счастливым и успешным ?
+				</h2>
+			</div>
+			<div class="max-w-7xl mx-auto justify-center md:flex md:items-center">
+				<p class="mt-4 text-xl">Мы можем раскрыть его способности используя методику Монтессори</p>
+			</div>
+
+			<div class="max-w-7xl mx-auto md:flex md:items-center md:justify-between">
+				<div>
+					<i class="fa-solid fa-kitchen-set fa-4x pt-24"></i>
+					<h3 class="font-bold text-xl pt-12">
+						Повседневные <br />
+						бытовые навыки
+					</h3>
+					<span class="text-lg">
+						<li><p>Самостоятельность в быту</p></li>
+						<li><p>Уборка за собой</p></li>
+						<li>
+							<p>
+								Поддержание в чистоте и порядке <br />
+								своих вещей и обуви
+							</p>
+						</li>
+					</span>
+				</div>
+
+				<div>
+					<i class="fa-solid fa-graduation-cap fa-4x pt-24"></i>
+					<h3 class="font-bold text-xl pt-12">Саморазвитие</h3>
+					<span class="text-lg">
+						<li><p>Любовь к самостоятельному обучению</p></li>
+						<li><p>Концентрация внимания</p></li>
+						<li>
+							<p>Вежливость</p>
+						</li>
+						<li>
+							<p>Самомотивация</p>
+						</li>
+					</span>
+				</div>
+
+				<div>
+					<i class="fa-solid fa-users fa-4x pt-28"></i>
+					<h3 class="font-bold text-xl pt-12">Социальные Навыки</h3>
+					<span class="text-lg">
+						<li><p>Лидерские качества</p></li>
+						<li><p>Умение общаться и договариваться</p></li>
+						<li>
+							<p>
+								Спокойствие, психологическая <br />
+								уравновешенность
+							</p>
+						</li>
+
+						<li>
+							<p>Самоуважение</p>
+						</li>
+					</span>
+				</div>
+			</div>
+			<div class="mx-auto justify-center pt-16 text-lg">
+				<p>
+					В Билингвальном детском саду <strong> Монтессори Ньютон </strong> ждут в гости детей со
+					своими родителями! Это удобное пространство, где в малочисленной группе коллектив
+					воспитателей и педагогов организует быт и досуг маленьких подопечных. Такая обстановка
+					позволяет уделять им больше внимания и тщательнее следить за развитием каждого. Здесь есть
+					возможность реализовать дополнительные пожелания мам и пап.
+				</p>
+			</div>
+		</section>
+		<!-- SECTION 2 end -->
+
+		<!-- SECTION 3 start  -->
+		<section id="contacts" class="">
+			<!--Modal start-->
+			<div
+				class="modal z-10 fixed hidden inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full"
+				id="my-modal"
+			>
+				<div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+					<div class="mt-3 text-center">
+						<div
+							class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100"
+						>
+							<svg
+								class="h-6 w-6 text-green-600"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M5 13l4 4L19 7"
+								></path>
+							</svg>
+						</div>
+						<h3 class="text-lg leading-6 font-medium text-gray-900">Ваше сообщение отправлено</h3>
+						<div class="mt-2 px-7 py-3">
+							<p class="text-sm text-gray-500">
+								Мы ценим Ваше внимание и обязательно свяжемся с Вами
+							</p>
+						</div>
+						<div class="items-center px-4 py-3">
+							<button
+								id="ok-btn"
+								class="px-4 py-2 bg-green-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300"
+							>
+								Закрыть
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--Modal end-->
+			<!-- Contacts, Form and Map end  -->
+			<div
+				class="flex container mx-auto my-16 flex-col justify-center items-center bg-blue-500 px-10 py-10 rounded-xl shadow-lg text-white overflow-hidden max-w-5xl"
+			>
+				<div
+					class="flex flex-col md:flex-row md:space-x-6 space-y-6 md:space-y-0 bg-blue-500 w-full max-w-5xl sm:p-12 -mx-16"
+				>
+					<div class="flex flex-col space-y-8 justify-between">
+						<div>
+							<h1 class="font-bold text-4xl tracking-wide">Контакты</h1>
+							<p class="pt-8 text-indigo-100 text-xl">
+								Вы можете связаться с нами и мы обязательно ответим <br />
+								Мы очень ценим Ваше внимание
+							</p>
+						</div>
+						<div class="flex flex-col space-y-6">
+							<div class="inline-flex space-x-2 items-center w-60">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="30"
+									height="30"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="#a5b4fc"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									class="feather feather-phone"
+								>
+									<path
+										d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+									></path>
+								</svg>
+								<span class="text-lg">
+									<a href="tel:+79995918424">+7 (999) 591-84-24</a>
+								</span>
+							</div>
+							<div class="inline-flex space-x-2 items-center">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="30"
+									height="30"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="#a5b4fc"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									class="feather feather-mail"
+								>
+									<path
+										d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+									></path>
+									<polyline points="22,6 12,13 2,6"></polyline>
+								</svg>
+								<span class="text-lg">
+									<a href="mailto: yandex@yandex.ru">yandex@yandex.ru</a>
+								</span>
+							</div>
+							<div class="inline-flex space-x-2 items-center">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="30"
+									height="30"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="#a5b4fc"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									class="feather feather-map-pin"
+								>
+									<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+									<circle cx="12" cy="10" r="3"></circle>
+								</svg>
+								<span class="text-lg"
+									>Москва, поселение Сосенское, деревня Сосенки, Ясеневая улица, д.5,к.1
+								</span>
+							</div>
+						</div>
+						<div class="flex space-x-4">
+							<a href="">
+								<i class="fa-brands fa-vk fa-2x"></i>
+							</a>
+							<a href="">
+								<i class="fa-brands fa-instagram fa-2x"></i>
+							</a>
+						</div>
+					</div>
+					<div class="relative">
+						<div class="absolute z-0 w-40 h-40 bg-indigo-400 rounded-full -right-28 -top-28"></div>
+						<div
+							class="absolute z-0 w-40 h-40 bg-indigo-400 rounded-full -left-28 -bottom-16"
+						></div>
+						<div class="relative z-1 bg-white rounded-xl shadow-lg p-8 text-gray-600 md:w-96">
+							<form class="flex flex-col space-y-4" onsubmit="sendForm(this); return false;">
+								<div>
+									<label for="" class="text-sm">Имя*</label>
+									<input
+										required
+										name="user_name"
+										type="text"
+										placeholder="Имя"
+										class="ring-1 ring-gray-300 mt-2 w-full rounded-md px-4 py-2 outline-none focus:ring-2 focus:ring-indigo-300"
+									/>
+								</div>
+								<div>
+									<label for="" class="text-sm">Телефон*</label>
+									<input
+										required
+										name="tel"
+										type="text"
+										placeholder="Телефон"
+										class="ring-1 ring-gray-300 mt-2 w-full rounded-md px-4 py-2 outline-none focus:ring-2 focus:ring-indigo-300"
+									/>
+								</div>
+								<div>
+									<label for="" class="text-sm">Email*</label>
+									<input
+										required
+										type="email"
+										name="email"
+										placeholder="Email"
+										class="ring-1 ring-gray-300 mt-2 w-full rounded-md px-4 py-2 outline-none focus:ring-2 focus:ring-indigo-300"
+									/>
+								</div>
+								<div>
+									<label for="" class="text-sm">Сообщение</label>
+									<textarea
+										name="message"
+										placeholder="Сообщение ( не обязательно )"
+										rows="2"
+										class="ring-1 ring-gray-300 mt-2 w-full rounded-md px-4 py-2 outline-none focus:ring-2 focus:ring-indigo-300"
+									></textarea>
+								</div>
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox" required />
+									<label class="form-check-label" for="autoSizingCheck2">
+										Предоставляю согласие на обработку персональных данных
+									</label>
+								</div>
+								<button
+									class="inline-block self-end bg-blue-500 font-bold rounded-lg px-6 py-4 uppercase text-sm text-white"
+								>
+									Отправить
+								</button>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div
+					class="flex justify-center items-center md:flex-row md:space-x-6 space-y-6 md:space-y-0 w-full max-w-5xl py-10 sm:p-12"
+				>
+					<script
+						type="text/javascript"
+						charset="utf-8"
+						async
+						src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A4b5b891a4288ed9551e467bbd64bddbf87d00cbfab004cdf0e0ffc08f4e7002d&amp;width=1000&amp;height=400&amp;lang=ru_RU&amp;scroll=true"
+					></script>
+				</div>
+			</div>
+			<!-- Contacts, Form and Map end  -->
+		</section>
+		<!-- SECTION 3 end -->
+
+		<!-- scroll-to-top start -->
+		<div
+			class="fixed bottom-3 right-3"
+			x-data="{ currentScrollPosition: window.pageYOffset }"
+			x-show="(currentScrollPosition != 0) ? true : false"
+			x-transition:enter="transition ease-out duration-1000"
+			x-transition:enter-start="opacity-0 transform -translate-y-48"
+			x-transition:enter-end="opacity-100 transform translate-y-0"
+			x-transition:leave="transition ease-in-out duration-500"
+			x-transition:leave-start="opacity-100 transform translate-0 rotate-0"
+			x-transition:leave-end="opacity-0 transform translate-y-4 rotate-180 opacity-0"
+		>
+			<i
+				class="fa-regular fa-circle-up fa-3x opacity-50 hover:opacity-100 cursor-pointer z-30 p-3 transition duration-300 ease-in-out text-indigo-400 rounded-sm focus:outline-none"
+				@click="window.scrollTo({ top: 0, behavior: 'smooth' })"
+				@scroll.window="currentScrollPosition = window.pageYOffset"
+			></i>
+		</div>
+		<!-- scroll-to-top end -->
+
+		<footer class="flex gap-2 bg-blue-500 text-white p-8 items-center justify-center">
+			<p>Все права защищены | &copy | Детский сад Ньютон |</p>
+			<script>
+				document.write(new Date().getFullYear());
+			</script>
+		</footer>
+
+		<script>
+			// script убирает #якоря c url
+window.addEventListener("popstate", function () {
+	history.pushState("", "", location.pathname);
+});
+
+// script carousel (в этой переменной фото)
+const carousel = () => {
+	return {
+		selected: 0,
+		images: ["/img/3.jpg", "/img/2.jpg", "/img/1.jpg"],
+	};
+};
+
+// script modal window
+let modal = document.getElementById("my-modal");
+let button = document.getElementById("ok-btn");
+
+button.onclick = function () {
+	modal.style.display = "none";
+};
+
+window.onclick = function (event) {
+	if (event.target == modal) {
+		modal.style.display = "none";
+	}
+};
+// script отправки формы без перезагрузки страницы
+
+async function sendForm(form) {
+	let response = await fetch("sendMail.php", {
+					method: "POST",
+					body: new FormData(form),
+				});
+let res = await response.json();
+				if (res == "ok") {
+					alert("sendOk")
+				}
+			}
+		</script>
+
+	</body>
+</html>
