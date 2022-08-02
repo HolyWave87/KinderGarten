@@ -1,1 +1,2 @@
-# Site KinderGarten created by me
+Сайт частного детского сада, создан с использованием TailWind CSS и Alpine JS
+Это действительный проект, который располагается по адресу: http://mnewton.ru/
