@@ -9,7 +9,7 @@ $message = $_POST['message'];
 
 // отправляем данные с формы на почту
 
-mail("holywave@yandex.ru", "Письмо с сайта детского сада", "Имя: $userName, Телефон: $tel, Email: $email, Сообщение: $message");
+mail("newmontessori@mail.ru", "Message from Montessori-NewTon", "Name: $userName, Phone: $tel, Email: $email, Message: $message");
 
 // отправляем на фронт ответ в формате json
 

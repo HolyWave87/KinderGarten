@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="scroll-smooth" lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -12,10 +12,9 @@
 		/>
 		<link rel="stylesheet" href="/output.css" />
 		<link rel="stylesheet" href="/style.css" />
-		<!-- <link rel="stylesheet" href="/main.js"> -->
 		<script defer src="https://unpkg.com/alpinejs@3.10.3/dist/cdn.min.js"></script>
 		<script src="https://kit.fontawesome.com/9935986003.js" crossorigin="anonymous"></script>
-		<title>KinderGarten</title>
+		<title>NewMontessori</title>
 	</head>
 	<body
 		x-data="{navOpen: false, scrolledFromTop: false}"
@@ -94,30 +93,39 @@
 		<!-- SECTION HERO start  -->
 
 		<!-- SECTION 1 start  -->
-		<section class="pt-16 pb-16 px-8 md:px-12 bg-gray-100 text-center">
+		<section class="py-6 md:px-12 my-10 text-center">
 			<!-- Carousel start  -->
+			<div class="max-w-6xl mx-auto mt-4 shadow-2xl rounded-xl" x-data="carousel()">
+				<div class="relative">
+					<img
+						class="flex-shrink-0 w-full h-full rounded-xl object-center object-contain"
+						:src="images[selected]"
+						alt="pictures"
+					/>
 
-			<div x-data="carousel()" class="relative object-contain">
-				<img class="img-carousel w-full object-contain" :src="images[selected]" alt="pictures" />
-
-				<i
-					@click="if (selected > 0 ) {selected -= 1} else { selected = images.length - 1 }"
-					class="fa-regular fa-circle-left fa-3x absolute left-0 bottom-56 ml-8 text-indigo-400 opacity-50 hover:opacity-100 cursor-pointer focus:outline-none"
-				></i>
-
-				<i
-					@click="if (selected < images.length - 1  ) {selected += 1} else { selected = 0 }"
-					class="fa-regular fa-circle-right fa-3x absolute right-0 bottom-56 mr-8 text-indigo-400 opacity-50 hover:opacity-100 cursor-pointer focus:outline-none"
-				></i>
-
-				<div class="absolute bottom-0 w-full p-4 flex justify-center space-x-6">
-					<template x-for="(image,index) in images" :key="index">
-						<button
-							@click="selected = index"
-							:class="{'bg-indigo-400': selected == index, 'bg-gray-500': selected != index}"
-							class="h-2 w-5 rounded-full hover:bg-gray-300 ring-2 ring-gray-300"
-						></button>
-					</template>
+					<div class="absolute top-0 left-0 bottom-0 flex items-center">
+						<i
+							class="fa-regular fa-circle-left fa-3x py-2 px-2 text-blue-500 opacity-50 hover:opacity-100 cursor-pointer focus:outline-none"
+							@click="if (selected > 0 ) {selected -= 1} else { selected = images.length - 1 }"
+						>
+						</i>
+					</div>
+					<div class="absolute top-0 right-0 bottom-0 flex items-center">
+						<i
+							class="fa-regular fa-circle-right fa-3x py-2 px-2 text-blue-500 opacity-50 hover:opacity-100 cursor-pointer focus:outline-none"
+							@click="if (selected < images.length - 1  ) {selected += 1} else { selected = 0 }"
+						>
+						</i>
+					</div>
+					<div class="absolute bottom-0 w-full p-4 flex justify-center space-x-6">
+						<template x-for="(image,index) in images" :key="index">
+							<button
+								@click="selected = index"
+								:class="{'bg-blue-500': selected == index, 'bg-gray-500': selected != index}"
+								class="h-2 w-8 rounded-full hover:bg-gray-300 ring-2 ring-gray-300"
+							></button>
+						</template>
+					</div>
 				</div>
 			</div>
 
@@ -126,17 +134,17 @@
 		<!-- SECTION 1 end  -->
 
 		<!-- SECTION 2 start -->
-		<section id="about" class="pt-32 pb-16 px-8 md:px-12 bg-gray-100 text-center">
-			<div class="max-w-7xl mx-auto justify-center pt-16 md:flex md:items-center">
+		<section id="about" class="text-center flex container mx-auto my-16 flex-col justify-center items-center bg-blue-500 px-10 py-10 rounded-xl shadow-lg text-white overflow-hidden max-w-6xl">
+			<div class="flex mx-auto justify-center md:items-center">
 				<h2 class="font-bold text-4xl md:text-4xl leading-normal">
 					Желаете, чтобы Ваш ребенок вырос счастливым и успешным ?
 				</h2>
 			</div>
-			<div class="max-w-7xl mx-auto justify-center md:flex md:items-center">
+			<div class="flex mx-auto justify-center  md:items-center">
 				<p class="mt-4 text-xl">Мы можем раскрыть его способности используя методику Монтессори</p>
 			</div>
 
-			<div class="max-w-7xl mx-auto md:flex md:items-center md:justify-between">
+			<div class=" gap-16 mx-auto md:flex md:items-center md:justify-between">
 				<div>
 					<i class="fa-solid fa-kitchen-set fa-4x pt-24"></i>
 					<h3 class="font-bold text-xl pt-12">
@@ -194,8 +202,8 @@
 					В Билингвальном детском саду <strong> Монтессори Ньютон </strong> ждут в гости детей со
 					своими родителями! Это удобное пространство, где в малочисленной группе коллектив
 					воспитателей и педагогов организует быт и досуг маленьких подопечных. Такая обстановка
-					позволяет уделять им больше внимания и тщательнее следить за развитием каждого. Здесь есть
-					возможность реализовать дополнительные пожелания мам и пап.
+					позволяет уделять им больше внимания и тщательнее следить за развитием каждого ребенка.
+					Здесь есть возможность реализовать дополнительные пожелания мам и пап.
 				</p>
 			</div>
 		</section>
@@ -248,7 +256,7 @@
 			<!--Modal end-->
 			<!-- Contacts, Form and Map end  -->
 			<div
-				class="flex container mx-auto my-16 flex-col justify-center items-center bg-blue-500 px-10 py-10 rounded-xl shadow-lg text-white overflow-hidden max-w-5xl"
+				class="flex container mx-auto my-16 flex-col justify-center items-center bg-blue-500 px-10 py-10 rounded-xl shadow-lg text-white overflow-hidden max-w-6xl"
 			>
 				<div
 					class="flex flex-col md:flex-row md:space-x-6 space-y-6 md:space-y-0 bg-blue-500 w-full max-w-5xl sm:p-12 -mx-16"
@@ -302,7 +310,7 @@
 									<polyline points="22,6 12,13 2,6"></polyline>
 								</svg>
 								<span class="text-lg">
-									<a href="mailto: yandex@yandex.ru">yandex@yandex.ru</a>
+									<a href="mailto: newmontessori@mail.ru">newmontessori@mail.ru</a>
 								</span>
 							</div>
 							<div class="inline-flex space-x-2 items-center">
@@ -327,12 +335,12 @@
 							</div>
 						</div>
 						<div class="flex space-x-4">
-							<a href="">
+							<!-- <a href="">
 								<i class="fa-brands fa-vk fa-2x"></i>
 							</a>
 							<a href="">
 								<i class="fa-brands fa-instagram fa-2x"></i>
-							</a>
+							</a> -->
 						</div>
 					</div>
 					<div class="relative">
@@ -397,7 +405,7 @@
 					</div>
 				</div>
 				<div
-					class="flex justify-center items-center md:flex-row md:space-x-6 space-y-6 md:space-y-0 w-full max-w-5xl py-10 sm:p-12"
+					class="flex justify-center items-center md:flex-row md:space-x-6 space-y-6 md:space-y-0 w-full max-w-5xl py-10 sm:p-12 "
 				>
 					<script
 						type="text/javascript"
@@ -424,7 +432,7 @@
 			x-transition:leave-end="opacity-0 transform translate-y-4 rotate-180 opacity-0"
 		>
 			<i
-				class="fa-regular fa-circle-up fa-3x opacity-50 hover:opacity-100 cursor-pointer z-30 p-3 transition duration-300 ease-in-out text-indigo-400 rounded-sm focus:outline-none"
+				class="fa-regular fa-circle-up fa-3x opacity-75 hover:opacity-100 cursor-pointer z-30 p-3 transition duration-300 ease-in-out text-indigo-400 rounded-sm focus:outline-none"
 				@click="window.scrollTo({ top: 0, behavior: 'smooth' })"
 				@scroll.window="currentScrollPosition = window.pageYOffset"
 			></i>
@@ -439,56 +447,7 @@
 		</footer>
 
 		<script>
-			// script убирает #якоря c url
-			window.addEventListener("popstate", function () {
-				history.pushState("", "", location.pathname);
-			});
-
-			// script carousel (в этой переменной фото)
-			const carousel = () => {
-				return {
-					selected: 0,
-					images: [
-						"/img/1.webp",
-						"/img/2.webp",
-						"/img/3.webp",
-						"/img/4.webp",
-						"/img/5.webp",
-						"/img/6.webp",
-						"/img/7.webp",
-						"/img/8.webp",
-						"/img/9.webp",
-						"/img/10.webp",
-					],
-				};
-			};
-
-			// script modal window
-			let modal = document.getElementById("my-modal");
-			let button = document.getElementById("ok-btn");
-
-			button.onclick = function () {
-				modal.style.display = "none";
-			};
-
-			window.onclick = function (event) {
-				if (event.target == modal) {
-					modal.style.display = "none";
-				}
-			};
-			// script отправки формы без перезагрузки страницы
-
-			async function sendForm(form) {
-				let response = await fetch("sendMail.php", {
-					method: "POST",
-					body: new FormData(form),
-				});
-				let data = await response.json();
-				if (data == "ok") {
-					modal.style.display = "block"; //вызываем modal window с ответа от сервера т.е. по отправке формы
-					form.reset(); // очищаем поля формы
-				}
-			}
+			window.addEventListener("popstate",function(){history.pushState("","",location.pathname)});const carousel=()=>({selected:0,images:["/img/1.webp","/img/2.webp","/img/3.webp","/img/4.webp","/img/5.webp","/img/6.webp","/img/7.webp","/img/8.webp","/img/9.webp","/img/10.webp"]});let modal=document.getElementById("my-modal"),button=document.getElementById("ok-btn");async function sendForm(e){let t=await fetch("sendMail.php",{method:"POST",body:new FormData(e)});"ok"==await t.json()&&(modal.style.display="block",e.reset())}button.onclick=function(){modal.style.display="none"},window.onclick=function(e){e.target==modal&&(modal.style.display="none")};
 		</script>
 	</body>
 </html>

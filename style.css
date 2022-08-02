@@ -2,6 +2,10 @@ html {
 	scroll-behavior: smooth;
 	font-family: "Lora", serif;
 }
-.img-carousel {
-	height: 600px;
+body {
+background: url(/img/background2.webp);
+background-size: cover;
+background-repeat: no-repeat;
+background-position: 0 0;
+background-attachment: fixed;
 }
