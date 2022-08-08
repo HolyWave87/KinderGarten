@@ -1,20 +1,58 @@
 <!DOCTYPE html>
-<html class="scroll-smooth" lang="en">
+<html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap"
-			rel="stylesheet"
-		/>
-		<link rel="stylesheet" href="/output.css" />
-		<link rel="stylesheet" href="/style.css" />
+		<meta name="description" content="Билингвальный детский сад Монтессори Ньютон" />
+		<meta name="theme-color" content="#317EFB" />
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-X72N7NFZ0D"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
+
+			gtag("config", "G-X72N7NFZ0D");
+		</script>
+		<!-- Yandex.Metrika counter -->
+		<script type="text/javascript">
+			(function (m, e, t, r, i, k, a) {
+				m[i] =
+					m[i] ||
+					function () {
+						(m[i].a = m[i].a || []).push(arguments);
+					};
+				m[i].l = 1 * new Date();
+				(k = e.createElement(t)),
+					(a = e.getElementsByTagName(t)[0]),
+					(k.async = 1),
+					(k.src = r),
+					a.parentNode.insertBefore(k, a);
+			})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+			ym(89874957, "init", {
+				clickmap: true,
+				trackLinks: true,
+				accurateTrackBounce: true,
+			});
+		</script>
+		<noscript
+			><div>
+				<img
+					src="https://mc.yandex.ru/watch/89874957"
+					style="position: absolute; left: -9999px"
+					alt=""
+				/></div
+		></noscript>
+		<!-- /Yandex.Metrika counter -->
+		<link rel="stylesheet" href="/output.css?v=115>" />
+		<link rel="stylesheet" href="/style.css?v=115" />
+		<link href="/fontawesome/css/all.css" rel="stylesheet" />
 		<script defer src="https://unpkg.com/alpinejs@3.10.3/dist/cdn.min.js"></script>
-		<script src="https://kit.fontawesome.com/9935986003.js" crossorigin="anonymous"></script>
-		<title>NewMontessori</title>
+		<title>Montessori Newton</title>
 	</head>
 	<body
 		x-data="{navOpen: false, scrolledFromTop: false}"
@@ -29,22 +67,22 @@
 			class="fixed w-full bg-blue-500 flex justify-between items-center px-4 text-lg md:px-12 transition-all duration-200 h-24 z-10"
 			:class="{'h-24': !scrolledFromTop, 'h-16': scrolledFromTop, 'text-base': scrolledFromTop}"
 		>
-			<a href="">
+			<a href="#home">
 				<img
 					src="/img/kids.webp"
-					alt="logo"
+					alt="logo Home"
 					class="h-12 transform origin-left transition duration-200"
 					:class="{'scale-100': !scrolledFromTop, 'scale-75': scrolledFromTop}"
 				/>
 			</a>
 			<nav>
-				<button class="md:hidden" @click="navOpen = !navOpen">
+				<button class="md:hidden" @click="navOpen = !navOpen" aria-label="Right Top burger">
 					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						class="h-8 w-8 text-white"
+						class="h-8 w-8"
 						fill="none"
-						viewBox="0 0 24 24"
 						stroke="currentColor"
+						viewBox="0 0 24 24"
+						xmlns="http://www.w3.org/2000/svg"
 					>
 						<path
 							stroke-linecap="round"
@@ -55,7 +93,7 @@
 					</svg>
 				</button>
 				<ul
-					class="fixed left-0 right-0 min-h-screen px-4 pt-8 space-y-4 bg-blue-500 text-white transform transition duration-300 translate-x-full md:relative md:flex md:space-x-10 md:min-h-0 md:px-0 md:py-0 md:space-y-0 md:translate-x-0"
+					class="fixed left-0 right-0 min-h-screen px-4 pt-8 space-y-4 bg-blue-500 transform transition duration-300 translate-x-full md:relative md:flex md:space-x-10 md:min-h-0 md:px-0 md:py-0 md:space-y-0 md:translate-x-0"
 					:class="{'translate-x-full': !navOpen}"
 					:class="{'translate-x-0': navOpen}"
 				>
@@ -80,13 +118,13 @@
 		<section id="home" class="pt-32 pb-16 px-8 md:px-12 bg-blue-500 text-center">
 			<div class="max-w-7xl mx-auto md:flex md:items-center md:justify-between">
 				<div class="md:flex-1 md:mr-6">
-					<h1 class="font-bold text-4xl md:text-5xl text-white leading-normal">
+					<h1 class="font-bold text-4xl md:text-5xl leading-normal">
 						Билингвальный детский сад Монтессори "Ньютон"
 					</h1>
-					<p class="mt-4 text-2xl text-white">Дошкольное развитие по международным стандартам</p>
+					<p class="mt-4 text-2xl">Дошкольное развитие по международным стандартам</p>
 				</div>
 				<div class="md:flex-1 pt-6">
-					<img src="/img/HeroLogo.webp" alt="KinderGarden" />
+					<img src="/img/HeroLogo.webp" alt="logo Hero" />
 				</div>
 			</div>
 		</section>
@@ -95,36 +133,72 @@
 		<!-- SECTION 1 start  -->
 		<section class="py-6 md:px-12 my-10 text-center">
 			<!-- Carousel start  -->
-			<div class="max-w-6xl mx-auto mt-4 shadow-2xl rounded-xl" x-data="carousel()">
-				<div class="relative">
-					<img
-						class="flex-shrink-0 w-full h-full rounded-xl object-center object-contain"
-						:src="images[selected]"
-						alt="pictures"
-					/>
+			<div class="max-w-5xl mx-auto mt-4">
+				<div class="carousel relative">
+					<div class="slide-container flex overflow-x-scroll">
+						<div class="slide flex items-center justify-center">
+							<div class="image-carousel">
+								<img class="rounded-2xl shadow-2xl" src="/img/1.webp" alt="picture KinderGarten" />
+							</div>
+						</div>
 
+						<div class="slide flex items-center justify-center">
+							<div class="image-carousel">
+								<img class="rounded-2xl shadow-2xl" src="/img/2.webp" alt="picture KinderGarten" />
+							</div>
+						</div>
+						<div class="slide flex items-center justify-center">
+							<div class="image-carousel">
+								<img class="rounded-2xl shadow-2xl" src="/img/3.webp" alt="picture KinderGarten" />
+							</div>
+						</div>
+						<div class="slide flex items-center justify-center">
+							<div class="image-carousel">
+								<img class="rounded-2xl shadow-2xl" src="/img/4.webp" alt="picture KinderGarten" />
+							</div>
+						</div>
+						<div class="slide flex items-center justify-center">
+							<div class="image-carousel">
+								<img class="rounded-2xl shadow-2xl" src="/img/5.webp" alt="picture KinderGarten" />
+							</div>
+						</div>
+						<div class="slide flex items-center justify-center">
+							<div class="image-carousel">
+								<img class="rounded-2xl shadow-2xl" src="/img/6.webp" alt="picture KinderGarten" />
+							</div>
+						</div>
+						<div class="slide flex items-center justify-center">
+							<div class="image-carousel">
+								<img class="rounded-2xl shadow-2xl" src="/img/7.webp" alt="picture KinderGarten" />
+							</div>
+						</div>
+						<div class="slide flex items-center justify-center">
+							<div class="image-carousel">
+								<img class="rounded-2xl shadow-2xl" src="/img/8.webp" alt="picture KinderGarten" />
+							</div>
+						</div>
+						<div class="slide flex items-center justify-center">
+							<div class="image-carousel">
+								<img class="rounded-2xl shadow-2xl" src="/img/9.webp" alt="picture KinderGarten" />
+							</div>
+						</div>
+						<div class="slide flex items-center justify-center">
+							<div class="image-carousel">
+								<img class="rounded-2xl shadow-2xl" src="/img/10.webp" alt="picture KinderGarten" />
+							</div>
+						</div>
+					</div>
 					<div class="absolute top-0 left-0 bottom-0 flex items-center">
 						<i
-							class="fa-regular fa-circle-left fa-3x py-2 px-2 text-blue-500 opacity-50 hover:opacity-100 cursor-pointer focus:outline-none"
-							@click="if (selected > 0 ) {selected -= 1} else { selected = images.length - 1 }"
+							class="prevBtn fa-regular fa-circle-left fa-3x text-blue-500 py-2 px-2 opacity-50 hover:opacity-100 cursor-pointer focus:outline-none"
 						>
 						</i>
 					</div>
 					<div class="absolute top-0 right-0 bottom-0 flex items-center">
 						<i
-							class="fa-regular fa-circle-right fa-3x py-2 px-2 text-blue-500 opacity-50 hover:opacity-100 cursor-pointer focus:outline-none"
-							@click="if (selected < images.length - 1  ) {selected += 1} else { selected = 0 }"
+							class="nextBtn fa-regular fa-circle-right fa-3x text-blue-500 py-2 px-2 opacity-50 hover:opacity-100 cursor-pointer focus:outline-none"
 						>
 						</i>
-					</div>
-					<div class="absolute bottom-0 w-full p-4 flex justify-center space-x-6">
-						<template x-for="(image,index) in images" :key="index">
-							<button
-								@click="selected = index"
-								:class="{'bg-blue-500': selected == index, 'bg-gray-500': selected != index}"
-								class="h-2 w-8 rounded-full hover:bg-gray-300 ring-2 ring-gray-300"
-							></button>
-						</template>
 					</div>
 				</div>
 			</div>
@@ -136,7 +210,7 @@
 		<!-- SECTION 2 start -->
 		<section
 			id="about"
-			class="text-center flex container mx-auto my-16 flex-col justify-center items-center bg-blue-500 px-10 py-10 rounded-xl shadow-lg text-white overflow-hidden max-w-6xl"
+			class="text-center flex container mx-auto my-16 flex-col justify-center items-center bg-blue-500 px-10 py-10 rounded-xl shadow-lg overflow-hidden max-w-6xl"
 		>
 			<div class="flex mx-auto justify-center md:items-center">
 				<h2 class="font-bold text-4xl md:text-4xl leading-normal">
@@ -149,55 +223,55 @@
 
 			<div class="gap-16 mx-auto md:flex md:items-center md:justify-between">
 				<div>
-					<i class="fa-solid fa-kitchen-set fa-4x pt-24"></i>
+					<i class="fa-solid fa-kitchen-set fa-4x pt-12"></i>
 					<h3 class="font-bold text-xl pt-12">
 						Повседневные <br />
 						бытовые навыки
 					</h3>
-					<span class="text-lg">
-						<li><p>Самостоятельность в быту</p></li>
-						<li><p>Уборка за собой</p></li>
+					<ul class="text-lg">
+						<li><p>&bull; Самостоятельность в быту</p></li>
+						<li><p>&bull; Уборка за собой</p></li>
 						<li>
 							<p>
-								Поддержание в чистоте и порядке <br />
+								&bull; Поддержание в чистоте и порядке <br />
 								своих вещей и обуви
 							</p>
 						</li>
-					</span>
+					</ul>
 				</div>
 
 				<div>
-					<i class="fa-solid fa-graduation-cap fa-4x pt-24"></i>
+					<i class="fa-solid fa-graduation-cap fa-4x pt-12"></i>
 					<h3 class="font-bold text-xl pt-12">Саморазвитие</h3>
-					<span class="text-lg">
-						<li><p>Любовь к самостоятельному обучению</p></li>
-						<li><p>Концентрация внимания</p></li>
+					<ul class="text-lg">
+						<li><p>&bull; Любовь к самостоятельному обучению</p></li>
+						<li><p>&bull; Концентрация внимания</p></li>
 						<li>
-							<p>Вежливость</p>
+							<p>&bull; Вежливость</p>
 						</li>
 						<li>
-							<p>Самомотивация</p>
+							<p>&bull; Самомотивация</p>
 						</li>
-					</span>
+					</ul>
 				</div>
 
 				<div>
-					<i class="fa-solid fa-users fa-4x pt-28"></i>
+					<i class="fa-solid fa-users fa-4x pt-16"></i>
 					<h3 class="font-bold text-xl pt-12">Социальные Навыки</h3>
-					<span class="text-lg">
-						<li><p>Лидерские качества</p></li>
-						<li><p>Умение общаться и договариваться</p></li>
+					<ul class="text-lg">
+						<li><p>&bull; Лидерские качества</p></li>
+						<li><p>&bull; Умение общаться и договариваться</p></li>
 						<li>
 							<p>
-								Спокойствие, психологическая <br />
+								&bull; Спокойствие, психологическая <br />
 								уравновешенность
 							</p>
 						</li>
 
 						<li>
-							<p>Самоуважение</p>
+							<p>&bull; Самоуважение</p>
 						</li>
-					</span>
+					</ul>
 				</div>
 			</div>
 			<div class="mx-auto justify-center pt-16 text-lg">
@@ -219,7 +293,7 @@
 				class="modal z-10 fixed hidden inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full"
 				id="my-modal"
 			>
-				<div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+				<div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md text-amber-300">
 					<div class="mt-3 text-center">
 						<div
 							class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100"
@@ -248,7 +322,7 @@
 						<div class="items-center px-4 py-3">
 							<button
 								id="ok-btn"
-								class="px-4 py-2 bg-green-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300"
+								class="px-4 py-2 bg-green-500 text-base font-medium rounded-md w-full shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300"
 							>
 								Закрыть
 							</button>
@@ -259,16 +333,16 @@
 			<!--Modal end-->
 			<!-- Contacts, Form and Map end  -->
 			<div
-				class="flex container mx-auto my-16 flex-col justify-center items-center bg-blue-500 px-10 py-10 rounded-xl shadow-lg text-white overflow-hidden max-w-6xl"
+				class="flex container mx-auto my-16 flex-col justify-center items-center bg-blue-500 px-10 py-10 rounded-xl shadow-lg overflow-hidden max-w-6xl"
 			>
 				<div
-					class="flex flex-col md:flex-row md:space-x-6 space-y-6 md:space-y-0 bg-blue-500 w-full max-w-5xl sm:p-12 -mx-16"
+					class="flex flex-col md:flex-row md:space-x-6 space-y-6 md:space-y-0 bg-blue-500 w-full max-w-5xl sm:p-12 -mx-16 justify-between"
 				>
 					<div class="flex flex-col space-y-8 justify-between">
 						<div>
 							<h1 class="font-bold text-4xl tracking-wide">Контакты</h1>
-							<p class="pt-8 text-indigo-100 text-xl">
-								Вы можете связаться с нами и мы обязательно ответим <br />
+							<p class="pt-8 text-xl">
+								Вы можете связаться с нами <br />
 								Мы очень ценим Ваше внимание
 							</p>
 						</div>
@@ -280,7 +354,7 @@
 									height="30"
 									viewBox="0 0 24 24"
 									fill="none"
-									stroke="#a5b4fc"
+									stroke="#000"
 									stroke-width="2"
 									stroke-linecap="round"
 									stroke-linejoin="round"
@@ -290,14 +364,15 @@
 										d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
 									></path>
 								</svg>
-								<div class="fleч space-x-4">
-									<a href="https://t.me/+ce4ohHjPx_M1NzUy">
-										<i class="fa-brands fa-telegram fa-2x text-indigo-300"></i>
-									</a>
-								</div>
+
 								<span class="text-lg">
 									<a href="tel:+79995918424">+7 (999) 591-84-24</a>
 								</span>
+							</div>
+							<div class="flex space-x-2 text-lg text-center">
+								<a href="https://t.me/+ce4ohHjPx_M1NzUy">
+									<i class="fa-brands fa-telegram fa-2x"></i>&nbsp; Telegram
+								</a>
 							</div>
 							<div class="inline-flex space-x-2 items-center">
 								<svg
@@ -306,7 +381,7 @@
 									height="30"
 									viewBox="0 0 24 24"
 									fill="none"
-									stroke="#a5b4fc"
+									stroke="#000"
 									stroke-width="2"
 									stroke-linecap="round"
 									stroke-linejoin="round"
@@ -328,7 +403,7 @@
 									height="30"
 									viewBox="0 0 24 24"
 									fill="none"
-									stroke="#a5b4fc"
+									stroke="#000"
 									stroke-width="2"
 									stroke-linecap="round"
 									stroke-linejoin="round"
@@ -337,70 +412,71 @@
 									<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
 									<circle cx="12" cy="10" r="3"></circle>
 								</svg>
-								<span class="text-lg"
-									>Москва, поселение Сосенское, деревня Сосенки, Ясеневая улица, д.5,к.1
+								<span class="text-lg z-10"
+									>Москва, поселение Сосенское,<br />
+									деревня Сосенки, <br />
+									Ясеневая улица, д.5,к.1
 								</span>
 							</div>
 						</div>
-						<!-- <div class="flex space-x-4">
-							<a href="https://t.me/+ce4ohHjPx_M1NzUy">
-								<i class="fa-brands fa-telegram fa-2x"></i>
-							</a>
-						</div> -->
 					</div>
 					<div class="relative">
 						<div class="absolute z-0 w-40 h-40 bg-indigo-400 rounded-full -right-28 -top-28"></div>
 						<div
 							class="absolute z-0 w-40 h-40 bg-indigo-400 rounded-full -left-28 -bottom-16"
 						></div>
-						<div class="relative z-1 bg-white rounded-xl shadow-lg p-8 text-gray-600 md:w-96">
-							<form class="flex flex-col space-y-4" onsubmit="sendForm(this); return false;">
+						<div class="relative z-1 bg-white rounded-xl shadow-lg p-8 text-gray-600 md:max-w-lg">
+							<form
+								class="flex flex-col space-y-4 text-base leading-6 text-gray-700 sm:text-lg sm:leading-7"
+								onsubmit="sendForm(this); return false;"
+							>
 								<div>
-									<label for="" class="text-sm">Имя*</label>
+									<label for="" class="font-bold">Имя<span class="text-red-500">*</span></label>
 									<input
 										required
 										name="user_name"
 										type="text"
 										placeholder="Имя"
-										class="ring-1 ring-gray-300 mt-2 w-full rounded-md px-4 py-2 outline-none focus:ring-2 focus:ring-indigo-300"
+										class="w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
 									/>
 								</div>
 								<div>
-									<label for="" class="text-sm">Телефон*</label>
+									<label for="" class="font-bold">Телефон<span class="text-red-500">*</span></label>
 									<input
 										required
 										name="tel"
 										type="text"
 										placeholder="Телефон"
-										class="ring-1 ring-gray-300 mt-2 w-full rounded-md px-4 py-2 outline-none focus:ring-2 focus:ring-indigo-300"
+										class="w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
 									/>
 								</div>
 								<div>
-									<label for="" class="text-sm">Email*</label>
+									<label for="" class="font-bold">Email<span class="text-red-500">*</span></label>
 									<input
 										required
 										type="email"
 										name="email"
 										placeholder="Email"
-										class="ring-1 ring-gray-300 mt-2 w-full rounded-md px-4 py-2 outline-none focus:ring-2 focus:ring-indigo-300"
+										class="w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
 									/>
 								</div>
 								<div>
-									<label for="" class="text-sm">Сообщение</label>
+									<label for="" class="font-bold">Сообщение</label>
 									<textarea
 										name="message"
 										placeholder="Сообщение ( не обязательно )"
 										rows="2"
-										class="ring-1 ring-gray-300 mt-2 w-full rounded-md px-4 py-2 outline-none focus:ring-2 focus:ring-indigo-300"
+										class="w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
 									></textarea>
 								</div>
 								<div class="form-check">
-									<input class="form-check-input" type="checkbox" required />
-									<label class="form-check-label" for="autoSizingCheck2">
-										Предоставляю согласие на обработку персональных данных
+									<label>
+										<input class="form-check-input" type="checkbox" for="checkbox" required />
+										&nbsp Предоставляю согласие на обработку персональных данных
 									</label>
 								</div>
 								<button
+									type="submit"
 									class="inline-block self-end bg-blue-500 font-bold rounded-lg px-6 py-4 uppercase text-sm text-white"
 								>
 									Отправить
@@ -444,28 +520,24 @@
 		</div>
 		<!-- scroll-to-top end -->
 
-		<footer
-			class="flex gap-2 bg-blue-500 text-white p-8 items-center justify-center text-sm text-center"
-		>
+		<footer class="flex gap-2 bg-blue-500 p-8 items-center justify-center text-sm text-center">
 			<p>Created by</p>
 
-			<a class="hover:text-pink-200" href="https://github.com/HolyWave87"> <i class="fa-brands fa-github"></i></a>
-			<a href="https://t.me/HolyWave87"><i class="fa-brands fa-telegram"></i></a>
+			<a class="hover:text-amber-300" href="https://github.com/HolyWave87" for="github">
+				<i class="fa-brands fa-github"></i
+			></a>
+			<a class="hover:text-amber-300" href="https://t.me/HolyWave87" for="telegramm"
+				><i class="fa-brands fa-telegram"></i
+			></a>
 			<span>|</span>
 			<p>Все права защищены</p>
 			<p>&copy</p>
 			<span>|</span>
-			<p>
-				<script>
-					document.write(new Date().getFullYear());
-				</script>
-			</p>
+			<p>2022</p>
 			<span>|</span>
 			<p>Детский сад Ньютон</p>
 		</footer>
 
-		<script>
-			window.addEventListener("popstate",function(){history.pushState("","",location.pathname)});const carousel=()=>({selected:0,images:["/img/1.webp","/img/2.webp","/img/3.webp","/img/4.webp","/img/5.webp","/img/6.webp","/img/7.webp","/img/8.webp","/img/9.webp","/img/10.webp"]});let modal=document.getElementById("my-modal"),button=document.getElementById("ok-btn");async function sendForm(e){let t=await fetch("sendMail.php",{method:"POST",body:new FormData(e)});"ok"==await t.json()&&(modal.style.display="block",e.reset())}button.onclick=function(){modal.style.display="none"},window.onclick=function(e){e.target==modal&&(modal.style.display="none")};
-		</script>
+		<script src="/main.js?v=115"></script>
 	</body>
 </html>
